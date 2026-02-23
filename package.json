@@ -1,0 +1,31 @@
+{
+  "name": "lock.host-wasm-js",
+  "version": "0.1.0",
+  "description": "Lock.host WASM js starter",
+  "homepage": "https://lock.host",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rhodey/lock.host-wasm-js.git"
+  },
+  "scripts": {
+    "bundle": "rollup -c",
+    "build": "npm run bundle && componentize-js --wit wit -o dist/$npm_package_name.wasm dist/bundle.js"
+  },
+  "devDependencies": {
+    "@bytecodealliance/componentize-js": "0.19.0",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-replace": "^6.0.3",
+    "rollup": "^4.50.1"
+  },
+  "dependencies": {
+    "@noble/ed25519": "^3.0.0",
+    "@noble/hashes": "^2.0.1",
+    "@solana-program/system": "^0.12.0",
+    "@solana/kit": "^6.1.0",
+    "bs58": "^6.0.0",
+    "itty-router": "^5.0.22",
+    "openai": "^6.22.0"
+  }
+}
