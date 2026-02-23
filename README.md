@@ -31,7 +31,7 @@ cp example.env .env
 just build
 just run
 just joke 'why did the worker quit his job at the recycling factory? because it was soda pressing.'
-> {"signature":"25ndS3qg8EsiaN1uEBfpb63QNdWZDma8ap5Cc5Hv3P4nBM4kAd3pLJQiZHFGpYSm9HLcrzkQaz1mvDrw4Yy4Hu4X","from":"DohcaGiBiC3yuPz4gHtoA7QJhyL5N7hk3EpnfFyHZR2S","to":"CFf6SMjR3eNKR7me9CGHhRNE1SwSQaPi5r4MWZQFGB2W","thoughts":"The pun on 'soda pressing' is clever and plays with words, making it light-hearted and humorous."}
+> {"signature":"25ndS3qg8EsiaN1uEBfpb63QNdWZDma8ap5Cc5Hv3P4nBM4kAd3pLJQiZHFGpYSm9HLcrzkQaz1mvDrw4Yy4Hu4X","from":"DohcaGiBiC3yuPz4gHtoA7QJhyL5N7hk3EpnfFyHZR2S","to":"CFf6SMjR3eNKR7me9CGHhRNE1SwSQaPi5r4MWZQFGB2W","thoughts":"The joke plays on the pun between 'so depressing' and 'soda pressing', which is clever and light-hearted."}
 ```
 
 ## How
