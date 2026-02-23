@@ -97,4 +97,4 @@ const transfer = async (signer, dest, amount, rpc) => {
   return getSignatureFromTransaction(signedTx)
 }
 
-export { addressFromStr, addressFromSeed, signerFromSeed, getBalance, transfer }
+export { addressFromStr, signerFromSeed, getBalance, transfer }

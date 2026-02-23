@@ -1,7 +1,7 @@
 import './shim.js'
 import { AutoRouter } from 'itty-router'
 import { getEnvironment } from 'wasi:cli/environment@0.2.3'
-import { addressFromStr, addressFromSeed, signerFromSeed, getBalance, transfer } from './sol.js'
+import { addressFromStr, signerFromSeed, getBalance, transfer } from './sol.js'
 import OpenAI from 'openai'
 
 const env = (name) => {
