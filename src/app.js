@@ -48,8 +48,8 @@ const getBalancee = async (req) => {
 const tools = [{
   type: 'function',
   'function': {
-    name: 'record_if_joke_was_funny',
-    description: 'Record if joke was funny',
+    name: 'record_if_joke_is_funny',
+    description: 'Record if joke is funny',
     parameters: {
       type: 'object',
       properties: {
@@ -80,7 +80,7 @@ const getJoke = async (req) => {
 
   let reply = await getOai().chat.completions.create({
     model: 'gpt-4o-mini', temperature: 1,
-    tools, tool_choice: { type: 'function', 'function': { name: 'record_if_joke_was_funny' }},
+    tools, tool_choice: { type: 'function', 'function': { name: 'record_if_joke_is_funny' }},
     messages,
   })
 
