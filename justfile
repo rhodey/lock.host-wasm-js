@@ -8,6 +8,7 @@ plug:
     dist/bundle.wasm \
     --plug node_modules/sqlite-wasm-wasi/dist/component.wasm \
     -o dist/bundle.total.wasm
+
 env:
   awk '!/^\s*#/ && NF { printf "--env %s ", $$0 }' .env
 
