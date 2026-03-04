@@ -13,7 +13,7 @@ env:
 
 run:
   mkdir -p mount/
-  wasmtime serve -S common --dir ./mount::/app dist/bundle.total.wasm $(just env)
+  wasmtime serve -S cli -S http --dir ./mount::/app dist/bundle.total.wasm $(just env)
 
 joke joke:
   curl -G -d "addr=CFf6SMjR3eNKR7me9CGHhRNE1SwSQaPi5r4MWZQFGB2W" --data-urlencode "message={{joke}}" http://localhost:8080/api/joke && echo
