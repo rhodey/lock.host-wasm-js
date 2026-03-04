@@ -12,7 +12,8 @@
   },
   "scripts": {
     "bundle": "rollup -c",
-    "build": "npm run bundle && componentize-js --wit wit -o dist/bundle.wasm dist/bundle.js"
+    "wit": "mkdir -p wit/deps/sqlite && cp node_modules/sqlite-wasm-wasi/dist/wit/sqlite.wit wit/deps/sqlite/",
+    "build": "npm run bundle && npm run wit && componentize-js dist/bundle.js --wit wit -o dist/bundle.wasm"
   },
   "devDependencies": {
     "@bytecodealliance/componentize-js": "^0.19.3",
@@ -27,6 +28,7 @@
     "@solana/kit": "^6.1.0",
     "bs58": "^6.0.0",
     "itty-router": "^5.0.22",
-    "openai": "^6.22.0"
+    "openai": "^6.22.0",
+    "sqlite-wasm-wasi": "^0.5.2"
   }
 }

@@ -1,6 +1,7 @@
 package local:server;
 
-world component {
+world server {
+  import wasm:sqlite-wasi/sqlite;
   import wasi:cli/environment@0.2.3;
   export wasi:http/incoming-handler@0.2.3;
 }
