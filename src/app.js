@@ -2,6 +2,7 @@ import './shim.js'
 import { AutoRouter } from 'itty-router'
 import { getEnvironment } from 'wasi:cli/environment@0.2.3'
 import { addressFromStr, signerFromSeed, getBalance, transfer } from './sol.js'
+import { open } from 'sqlite-wasm-wasi'
 import OpenAI from 'openai'
 
 const env = (name) => {
@@ -25,6 +26,17 @@ const getSolSigner = async () => {
   return signerFromSeed(seed).then((ok) => {
     return signer = ok
   })
+}
+
+let db = null
+const getDb = () => {
+  if (db) { return db }
+  const ready = open('/app/app.db')
+  ready.exec(`
+    create table if not exists jokes
+      (id integer primary key, address text, joke text, thoughts text, funny integer)
+  `)
+  return db = ready
 }
 
 const on400 = () => new Response('400', { status: 400, headers: { 'Content-Type': 'text/plain' } })
@@ -73,6 +85,12 @@ const getJoke = async (req) => {
   if (!addr) { return on400() }
   const address = await addressFromStr(addr)
 
+  const db = getDb()
+  const insert = db.prepare('insert into jokes (address, joke) values (?, ?)')
+  const info = insert.run([address, message])
+  const jokeId = info.lastInsertRowid
+  insert.release()
+
   const messages = [
     { role: 'system', content: 'You are to decide if a joke is funny or not' },
     { role: 'user', content: message },
@@ -94,6 +112,10 @@ const getJoke = async (req) => {
   } catch (err) {
     return on500(err)
   }
+
+  const update = db.prepare('update jokes set thoughts = ?, funny = ? where id = ?')
+  update.run([reply.thoughts, funny ? 1 : 0, jokeId])
+  update.release()
 
   if (!funny) {
     const data = JSON.stringify({ thoughts: reply.thoughts })
